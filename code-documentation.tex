@@ -1,0 +1,127 @@
+\documentclass{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[dvipsnames]{xcolor} % dvipsnames for more color options
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+\usepackage{lipsum}
+
+% Custom code box setup
+\tcbuselibrary{minted, skins, breakable}
+\definecolor{lightgray}{gray}{0.95}
+\newtcblisting{codebox}{
+  colback=lightgray,
+  colframe=lightgray,
+  listing only,
+  minted style=colorful,
+  minted language=c++,
+  breakable,
+  left=0.5em,
+  enhanced,
+  boxrule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  listing engine=minted,
+  before skip=2em, % Adds space before the codebox
+  after skip=2em   % Adds space after the codebox
+}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=RoyalBlue,
+    filecolor=Tan,      
+    urlcolor=Tan,
+    citecolor=Tan
+}
+
+% Section and subsection title formatting
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\color{RoyalBlue}\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\color{RoyalBlue}\thesubsection}{1em}{}
+
+% Frenchspacing
+\frenchspacing
+
+%Sloppy
+\sloppy
+
+% ---------------------------------------------
+% Table of Contents setup with dotted lines
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+
+% Adjusting spacing in table of contents
+\setlength{\cftbeforesecskip}{1.5em}
+\setlength{\cftbeforesubsecskip}{1.5em}
+
+% Adjusting indents in table of contents
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{1.5em}
+% ---------------------------------------------
+
+% No indent and increased paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+  \centering
+  \vspace*{3cm}
+  \Huge
+  \textbf{Project Title}\\
+  \vspace{2cm}
+  %\Large
+  \huge
+  Project Subtitle\\
+  \vspace{2cm}
+  \Large
+  \textbf{Author Name}\\
+  \vfill
+  \Large
+  \today \\
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+\section{Section}
+Href example:  \href{https://github.com/sandropa}{link}.
+
+C\verb|++| codebox example:
+
+\begin{codebox}
+#inlcude <iostream>
+
+using namespace std;
+
+int main()
+{
+  cout<<"Hello world!";
+}
+\end{codebox}
+
+
+\subsection{Subsection}
+\lipsum[5-7]
+
+\section{Section}
+\lipsum[8]
+
+\subsection{Subsection}
+\lipsum[9]
+
+\subsection{Subsection}
+\lipsum[10]
+
+\end{document}
